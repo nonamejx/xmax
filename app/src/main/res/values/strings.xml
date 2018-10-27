@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">xmax</string>
+
+    <!--App Message-->
+    <string name="api_retry_error">Please retry!</string>
+    <string name="api_default_error">Something wrong happened!</string>
+    <string name="some_error">Some Error Occurred!</string>
+    <string name="connection_error">Internet connection lost!</string>
+
+    <!-- Splash Screen-->
+    <string name="screen_splash_title">Splash</string>
+
+    <!-- Main Screen -->
+    <string name="screen_main_title">Main</string>
+
+    <!-- Bottom menu-->
+    <string name="bottom_menu_category">Category</string>
+    <string name="bottom_menu_favorite">Favorite</string>
+    <string name="bottom_menu_file">File</string>
+    <string name="bottom_menu_more">More</string>
+
+    <!-- Category Fragment -->
+    <string name="fragment_category_title">Category</string>
+
+    <!-- Favorite Fragment -->
+    <string name="fragment_favorite_title">Favorite</string>
+
+    <!-- File Fragment -->
+    <string name="fragment_file_title">File</string>
+</resources>
