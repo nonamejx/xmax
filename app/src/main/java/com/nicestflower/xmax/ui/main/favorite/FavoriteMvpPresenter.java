@@ -1,4 +1,4 @@
-package com.nicestflower.xmax.ui.favorite;
+package com.nicestflower.xmax.ui.main.favorite;
 
 import com.nicestflower.xmax.ui.base.MvpPresenter;
 

@@ -1,8 +1,11 @@
-package com.nicestflower.xmax.ui.favorite;
+package com.nicestflower.xmax.ui.main.category;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +14,29 @@ import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.di.component.ActivityComponent;
 import com.nicestflower.xmax.ui.base.BaseFragment;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FavoriteFragment extends BaseFragment implements FavoriteMvpView {
+public class CategoryFragment extends BaseFragment implements CategoryMvpView {
 
-    public static final String TAG = "FavoriteFragment";
+    public static final String TAG = "CategoryFragment";
 
     @Inject
-    FavoriteMvpPresenter<FavoriteMvpView> mPresenter;
+    CategoryMvpPresenter<CategoryMvpView> mPresenter;
 
-    public static FavoriteFragment newInstance() {
+    @Inject
+    RecyclerViewAdapter rvCategoryAdapter;
+
+    @BindView(R.id.rvCategory)
+    RecyclerView rvCategory;
+
+    public static CategoryFragment newInstance() {
         Bundle args = new Bundle();
-        FavoriteFragment fragment = new FavoriteFragment();
+        CategoryFragment fragment = new CategoryFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -32,7 +44,7 @@ public class FavoriteFragment extends BaseFragment implements FavoriteMvpView {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_favorite, container, false);
+        final View view = inflater.inflate(R.layout.fragment_category, container, false);
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {
@@ -51,6 +63,18 @@ public class FavoriteFragment extends BaseFragment implements FavoriteMvpView {
             public void onClick(View v) {
             }
         });
+
+        // setup category recycler view
+        rvCategory.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        rvCategory.setItemAnimator(new DefaultItemAnimator());
+        rvCategory.setAdapter(rvCategoryAdapter);
+
+        mPresenter.onViewPrepared();
+    }
+
+    @Override
+    public void updateCategoryList(List<Book> books) {
+        rvCategoryAdapter.addItems(books);
     }
 
     @Override

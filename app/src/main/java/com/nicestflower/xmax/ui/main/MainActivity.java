@@ -3,13 +3,19 @@ package com.nicestflower.xmax.ui.main;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseActivity;
-import com.nicestflower.xmax.ui.category.CategoryFragment;
-import com.nicestflower.xmax.ui.favorite.FavoriteFragment;
-import com.nicestflower.xmax.ui.file.FileFragment;
+import com.nicestflower.xmax.ui.main.category.CategoryFragment;
+import com.nicestflower.xmax.ui.main.favorite.FavoriteFragment;
+import com.nicestflower.xmax.ui.main.file.FileFragment;
+import com.nicestflower.xmax.utils.BottomNavigationViewBehavior;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -23,6 +29,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @BindView(R.id.bottomNavigationView)
     BottomNavigationView bottomNavigationView;
+
+    private Map<String, Fragment> fragmentMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +48,16 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     protected void setUp() {
+        setUpFragmentMap();
         setUpBottomNavigationView();
         mPresenter.onCategoryMenuClick();
+    }
+
+    private void setUpFragmentMap() {
+        fragmentMap = new HashMap<>();
+        fragmentMap.put(CategoryFragment.TAG, CategoryFragment.newInstance());
+        fragmentMap.put(FavoriteFragment.TAG, FavoriteFragment.newInstance());
+        fragmentMap.put(FileFragment.TAG, FileFragment.newInstance());
     }
 
     private void setUpBottomNavigationView() {
@@ -60,10 +76,14 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                         mPresenter.onFileMenuClick();
                         break;
                 }
-
                 return true;
             }
         });
+
+        // attaching bottom sheet behaviour - hide / show on scroll
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationViewBehavior());
+
     }
 
     @Override
@@ -71,7 +91,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
-                .replace(R.id.container, CategoryFragment.newInstance(), CategoryFragment.TAG)
+                .replace(R.id.container, fragmentMap.get(CategoryFragment.TAG), CategoryFragment.TAG)
                 .commit();
     }
 
@@ -80,7 +100,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
-                .replace(R.id.container, FavoriteFragment.newInstance(), FavoriteFragment.TAG)
+                .replace(R.id.container, fragmentMap.get(FavoriteFragment.TAG), FavoriteFragment.TAG)
                 .commit();
     }
 
@@ -89,7 +109,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
-                .replace(R.id.container, FileFragment.newInstance(), FileFragment.TAG)
+                .replace(R.id.container, fragmentMap.get(FileFragment.TAG), FileFragment.TAG)
                 .commit();
     }
 }

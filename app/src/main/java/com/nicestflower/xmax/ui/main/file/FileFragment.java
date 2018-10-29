@@ -1,4 +1,4 @@
-package com.nicestflower.xmax.ui.file;
+package com.nicestflower.xmax.ui.main.file;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

@@ -6,9 +6,14 @@ import com.nicestflower.xmax.data.db.DbHelper;
 import com.nicestflower.xmax.data.network.ApiHelper;
 import com.nicestflower.xmax.data.prefs.PreferencesHelper;
 import com.nicestflower.xmax.di.ApplicationContext;
+import com.nicestflower.xmax.ui.main.category.Book;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import io.reactivex.Observable;
 
 @Singleton
 public class AppDataManager implements DataManager {
@@ -29,4 +34,8 @@ public class AppDataManager implements DataManager {
         mApiHelper = apiHelper;
     }
 
+    @Override
+    public Observable<List<Book>> getCategoryList() {
+        return mDbHelper.getCategoryList();
+    }
 }

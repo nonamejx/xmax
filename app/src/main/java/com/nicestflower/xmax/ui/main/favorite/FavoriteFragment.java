@@ -1,4 +1,4 @@
-package com.nicestflower.xmax.ui.category;
+package com.nicestflower.xmax.ui.main.favorite;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,16 +15,16 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
-public class CategoryFragment extends BaseFragment implements CategoryMvpView {
+public class FavoriteFragment extends BaseFragment implements FavoriteMvpView {
 
-    public static final String TAG = "CategoryFragment";
+    public static final String TAG = "FavoriteFragment";
 
     @Inject
-    CategoryMvpPresenter<CategoryMvpView> mPresenter;
+    FavoriteMvpPresenter<FavoriteMvpView> mPresenter;
 
-    public static CategoryFragment newInstance() {
+    public static FavoriteFragment newInstance() {
         Bundle args = new Bundle();
-        CategoryFragment fragment = new CategoryFragment();
+        FavoriteFragment fragment = new FavoriteFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -32,7 +32,7 @@ public class CategoryFragment extends BaseFragment implements CategoryMvpView {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_favorite, container, false);
 
         ActivityComponent component = getActivityComponent();
         if (component != null) {

@@ -1,4 +1,4 @@
-package com.nicestflower.xmax.ui.category;
+package com.nicestflower.xmax.ui.main.favorite;
 
 import com.nicestflower.xmax.data.DataManager;
 import com.nicestflower.xmax.ui.base.BasePresenter;
@@ -8,10 +8,10 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public class CategoryPresenter<V extends CategoryMvpView> extends BasePresenter<V> implements CategoryMvpPresenter<V> {
+public class FavoritePresenter<V extends FavoriteMvpView> extends BasePresenter<V> implements FavoriteMvpPresenter<V> {
 
     @Inject
-    public CategoryPresenter(DataManager dataManager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
+    public FavoritePresenter(DataManager dataManager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 }
