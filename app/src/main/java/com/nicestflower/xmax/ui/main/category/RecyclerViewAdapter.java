@@ -16,13 +16,19 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
+    private Callback callback;
     private List<Book> mData;
 
     public RecyclerViewAdapter(List<Book> mData) {
         this.mData = mData;
+    }
+
+    public void setCallback(Callback callback) {
+        this.callback = callback;
     }
 
     @NonNull
@@ -47,6 +53,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public void addItems(final List<Book> books) {
         mData.addAll(books);
         notifyDataSetChanged();
+    }
+
+    public interface Callback {
+        void onCategoryClick();
     }
 
     public class ViewHolder extends BaseViewHolder {
@@ -78,11 +88,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             if (book.getThumbnail() != 0) {
                 img_book_thumbnail.setImageResource(book.getThumbnail());
             }
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                }
-            });
+        }
+
+        @OnClick(R.id.cardView)
+        void onCardViewClick() {
+            if (callback != null) {
+                callback.onCategoryClick();
+            }
         }
     }
 

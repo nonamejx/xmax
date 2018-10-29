@@ -7,7 +7,7 @@
     <string name="some_error">Some Error Occurred!</string>
     <string name="connection_error">Internet connection lost!</string>
 
-    <!-- Splash Screen-->
+    <!-- Splash Screen -->
     <string name="screen_splash_title">Splash</string>
 
     <!-- Main Screen -->
@@ -27,4 +27,7 @@
 
     <!-- File Fragment -->
     <string name="fragment_file_title">File</string>
+
+    <!-- Lesson Screen -->
+    <string name="screen_lesson_title">Lesson</string>
 </resources>

@@ -52,4 +52,9 @@ public class CategoryPresenter<V extends CategoryMvpView> extends BasePresenter<
                     }
                 }));
     }
+
+    @Override
+    public void onCategoryClick() {
+        getMvpView().openLessonActivity();
+    }
 }

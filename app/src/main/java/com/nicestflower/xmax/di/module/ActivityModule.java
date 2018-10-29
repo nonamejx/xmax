@@ -6,6 +6,12 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.nicestflower.xmax.di.ActivityContext;
 import com.nicestflower.xmax.di.PerActivity;
+import com.nicestflower.xmax.ui.lesson.LessonMvpPresenter;
+import com.nicestflower.xmax.ui.lesson.LessonMvpView;
+import com.nicestflower.xmax.ui.lesson.LessonPresenter;
+import com.nicestflower.xmax.ui.main.MainMvpPresenter;
+import com.nicestflower.xmax.ui.main.MainMvpView;
+import com.nicestflower.xmax.ui.main.MainPresenter;
 import com.nicestflower.xmax.ui.main.category.Book;
 import com.nicestflower.xmax.ui.main.category.CategoryMvpPresenter;
 import com.nicestflower.xmax.ui.main.category.CategoryMvpView;
@@ -17,9 +23,6 @@ import com.nicestflower.xmax.ui.main.favorite.FavoritePresenter;
 import com.nicestflower.xmax.ui.main.file.FileMvpPresenter;
 import com.nicestflower.xmax.ui.main.file.FileMvpView;
 import com.nicestflower.xmax.ui.main.file.FilePresenter;
-import com.nicestflower.xmax.ui.main.MainMvpPresenter;
-import com.nicestflower.xmax.ui.main.MainMvpView;
-import com.nicestflower.xmax.ui.main.MainPresenter;
 import com.nicestflower.xmax.ui.splash.SplashMvpPresenter;
 import com.nicestflower.xmax.ui.splash.SplashMvpView;
 import com.nicestflower.xmax.ui.splash.SplashPresenter;
@@ -100,6 +103,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     FileMvpPresenter<FileMvpView> provideFilePresenter(FilePresenter<FileMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    LessonMvpPresenter<LessonMvpView> provideLessonPresenter(LessonPresenter<LessonMvpView> presenter) {
         return presenter;
     }
 }

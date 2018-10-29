@@ -2,6 +2,7 @@ package com.nicestflower.xmax.di.component;
 
 import com.nicestflower.xmax.di.PerActivity;
 import com.nicestflower.xmax.di.module.ActivityModule;
+import com.nicestflower.xmax.ui.lesson.LessonActivity;
 import com.nicestflower.xmax.ui.main.category.CategoryFragment;
 import com.nicestflower.xmax.ui.main.favorite.FavoriteFragment;
 import com.nicestflower.xmax.ui.main.file.FileFragment;
@@ -23,5 +24,7 @@ public interface ActivityComponent {
     void inject(FavoriteFragment fragment);
 
     void inject(FileFragment fragment);
+
+    void inject(LessonActivity activity);
 
 }
