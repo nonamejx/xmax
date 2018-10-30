@@ -1,5 +1,6 @@
 package com.nicestflower.xmax.data.db;
 
+import com.nicestflower.xmax.ui.lesson.Lesson;
 import com.nicestflower.xmax.ui.main.category.Book;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface DbHelper {
     // todo: this is just for demo, please remove or replace probably
     Observable<List<Book>> getCategoryList();
 
+    // todo: this is just for demo, please remove or replace probably
+    Observable<List<Lesson>> getLessonList();
 }

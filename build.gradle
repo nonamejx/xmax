@@ -51,6 +51,7 @@ ext {
     placeholderviewVersion = '0.6.1'
     debugDBVersion = '1.0.3'
     timberVersion = '4.6.0'
+    okdownloadVersion = '1.0.3'
 
     //Test dependencies
     junitVersion = '4.12'

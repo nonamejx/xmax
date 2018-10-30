@@ -6,6 +6,7 @@ import com.nicestflower.xmax.data.db.DbHelper;
 import com.nicestflower.xmax.data.network.ApiHelper;
 import com.nicestflower.xmax.data.prefs.PreferencesHelper;
 import com.nicestflower.xmax.di.ApplicationContext;
+import com.nicestflower.xmax.ui.lesson.Lesson;
 import com.nicestflower.xmax.ui.main.category.Book;
 
 import java.util.List;
@@ -37,5 +38,10 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<Book>> getCategoryList() {
         return mDbHelper.getCategoryList();
+    }
+
+    @Override
+    public Observable<List<Lesson>> getLessonList() {
+        return mDbHelper.getLessonList();
     }
 }
