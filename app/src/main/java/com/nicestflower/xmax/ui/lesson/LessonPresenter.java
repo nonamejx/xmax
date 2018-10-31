@@ -39,6 +39,8 @@ public class LessonPresenter<V extends LessonMvpView> extends BasePresenter<V> i
     public void onLessonClick(final LessonRowView lessonRowView, final int position, final Lesson lesson) {
         if (!lesson.getDownloaded()) {
             getMvpView().downloadFiles(lessonRowView, position, lesson);
+        } else {
+            getMvpView().openLessonDetailActivity(lesson);
         }
     }
 }

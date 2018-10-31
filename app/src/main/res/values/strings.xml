@@ -30,4 +30,7 @@
 
     <!-- Lesson Screen -->
     <string name="screen_lesson_title">Lesson</string>
+
+    <!-- Lesson Detail Screen -->
+    <string name="screen_lesson_detail_title">Lesson Detail</string>
 </resources>

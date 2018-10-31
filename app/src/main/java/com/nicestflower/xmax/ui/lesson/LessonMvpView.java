@@ -12,4 +12,6 @@ public interface LessonMvpView extends MvpView {
 
     void downloadFiles(final LessonRowView lessonRowView, final int position, final Lesson lesson);
 
+    void openLessonDetailActivity(Lesson lesson);
+
 }

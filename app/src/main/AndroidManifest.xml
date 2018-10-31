@@ -34,6 +34,10 @@
         <activity
             android:name=".ui.lesson.LessonActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.lesson.detail.LessonDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

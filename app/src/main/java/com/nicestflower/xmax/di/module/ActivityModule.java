@@ -9,6 +9,9 @@ import com.nicestflower.xmax.di.PerActivity;
 import com.nicestflower.xmax.ui.lesson.LessonMvpPresenter;
 import com.nicestflower.xmax.ui.lesson.LessonMvpView;
 import com.nicestflower.xmax.ui.lesson.LessonPresenter;
+import com.nicestflower.xmax.ui.lesson.detail.LessonDetailMvpPresenter;
+import com.nicestflower.xmax.ui.lesson.detail.LessonDetailMvpView;
+import com.nicestflower.xmax.ui.lesson.detail.LessonDetailPresenter;
 import com.nicestflower.xmax.ui.main.MainMvpPresenter;
 import com.nicestflower.xmax.ui.main.MainMvpView;
 import com.nicestflower.xmax.ui.main.MainPresenter;
@@ -109,6 +112,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     LessonMvpPresenter<LessonMvpView> provideLessonPresenter(LessonPresenter<LessonMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    LessonDetailMvpPresenter<LessonDetailMvpView> provideLessonDetailPresenter(LessonDetailPresenter<LessonDetailMvpView> presenter) {
         return presenter;
     }
 }

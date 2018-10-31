@@ -1,5 +1,6 @@
 package com.nicestflower.xmax.ui.lesson;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.liulishuo.okdownload.core.listener.DownloadListener1;
 import com.liulishuo.okdownload.core.listener.assist.Listener1Assist;
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseActivity;
+import com.nicestflower.xmax.ui.lesson.detail.LessonDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,5 +136,11 @@ public class LessonActivity extends BaseActivity implements LessonMvpView {
             public void taskEnd(@NonNull DownloadTask task, @NonNull EndCause cause, @Nullable Exception realCause, @NonNull Listener1Assist.Listener1Model model) {
             }
         });
+    }
+
+    @Override
+    public void openLessonDetailActivity(Lesson lesson) {
+        Intent intent = new Intent(this, LessonDetailActivity.class);
+        startActivity(intent);
     }
 }
