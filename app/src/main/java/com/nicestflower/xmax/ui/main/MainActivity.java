@@ -3,7 +3,6 @@ package com.nicestflower.xmax.ui.main;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 
@@ -12,7 +11,6 @@ import com.nicestflower.xmax.ui.base.BaseActivity;
 import com.nicestflower.xmax.ui.main.category.CategoryFragment;
 import com.nicestflower.xmax.ui.main.favorite.FavoriteFragment;
 import com.nicestflower.xmax.ui.main.file.FileFragment;
-import com.nicestflower.xmax.utils.BottomNavigationViewBehavior;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -79,10 +77,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 return true;
             }
         });
-
-        // attaching bottom sheet behaviour - hide / show on scroll
-        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
-        layoutParams.setBehavior(new BottomNavigationViewBehavior());
 
     }
 
