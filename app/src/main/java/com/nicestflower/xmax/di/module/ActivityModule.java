@@ -15,7 +15,7 @@ import com.nicestflower.xmax.ui.lesson.detail.LessonDetailPresenter;
 import com.nicestflower.xmax.ui.main.MainMvpPresenter;
 import com.nicestflower.xmax.ui.main.MainMvpView;
 import com.nicestflower.xmax.ui.main.MainPresenter;
-import com.nicestflower.xmax.ui.main.category.Book;
+import com.nicestflower.xmax.ui.main.category.Category;
 import com.nicestflower.xmax.ui.main.category.CategoryMvpPresenter;
 import com.nicestflower.xmax.ui.main.category.CategoryMvpView;
 import com.nicestflower.xmax.ui.main.category.CategoryPresenter;
@@ -94,7 +94,7 @@ public class ActivityModule {
     @Provides
     @PerActivity
     RecyclerViewAdapter provideCategoryAdapter() {
-        return new RecyclerViewAdapter(new ArrayList<Book>());
+        return new RecyclerViewAdapter(new ArrayList<Category>());
     }
 
     @Provides

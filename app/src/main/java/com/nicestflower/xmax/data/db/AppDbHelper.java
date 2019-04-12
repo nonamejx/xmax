@@ -2,7 +2,7 @@ package com.nicestflower.xmax.data.db;
 
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.lesson.Lesson;
-import com.nicestflower.xmax.ui.main.category.Book;
+import com.nicestflower.xmax.ui.main.category.Category;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,27 +22,16 @@ public class AppDbHelper implements DbHelper {
     }
 
     @Override
-    public Observable<List<Book>> getCategoryList() {
-        return Observable.fromCallable(new Callable<List<Book>>() {
+    public Observable<List<Category>> getCategoryList() {
+        return Observable.fromCallable(new Callable<List<Category>>() {
             @Override
-            public List<Book> call() throws Exception {
-                final List<Book> lstBook = new ArrayList<>();
-                lstBook.add(new Book("The Vegitarian", "Categorie Book", "Description book", R.drawable.thevigitarian));
-                lstBook.add(new Book("The Wild Robot", "Categorie Book", "Description book", R.drawable.thewildrobot));
-                lstBook.add(new Book("Maria Semples", "Categorie Book", "Description book", R.drawable.mariasemples));
-                lstBook.add(new Book("The Martian", "Categorie Book", "Description book", R.drawable.themartian));
-                lstBook.add(new Book("He Died with...", "Categorie Book", "Description book", R.drawable.hediedwith));
-                lstBook.add(new Book("The Vegitarian", "Categorie Book", "Description book", R.drawable.thevigitarian));
-                lstBook.add(new Book("The Wild Robot", "Categorie Book", "Description book", R.drawable.thewildrobot));
-                lstBook.add(new Book("Maria Semples", "Categorie Book", "Description book", R.drawable.mariasemples));
-                lstBook.add(new Book("The Martian", "Categorie Book", "Description book", R.drawable.themartian));
-                lstBook.add(new Book("He Died with...", "Categorie Book", "Description book", R.drawable.hediedwith));
-                lstBook.add(new Book("The Vegitarian", "Categorie Book", "Description book", R.drawable.thevigitarian));
-                lstBook.add(new Book("The Wild Robot", "Categorie Book", "Description book", R.drawable.thewildrobot));
-                lstBook.add(new Book("Maria Semples", "Categorie Book", "Description book", R.drawable.mariasemples));
-                lstBook.add(new Book("The Martian", "Categorie Book", "Description book", R.drawable.themartian));
-                lstBook.add(new Book("He Died with...", "Categorie Book", "Description book", R.drawable.hediedwith));
-                return lstBook;
+            public List<Category> call() throws Exception {
+                final List<Category> lstCategory = new ArrayList<>();
+                lstCategory.add(new Category("Part 1", "Categorie Category", "Description book", R.drawable.thevigitarian));
+                lstCategory.add(new Category("Part 2", "Categorie Category", "Description book", R.drawable.thewildrobot));
+                lstCategory.add(new Category("Part 3", "Categorie Category", "Description book", R.drawable.mariasemples));
+                lstCategory.add(new Category("Part 4", "Categorie Category", "Description book", R.drawable.themartian));
+                return lstCategory;
             }
         });
     }

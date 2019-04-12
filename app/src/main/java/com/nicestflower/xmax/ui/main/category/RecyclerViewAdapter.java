@@ -21,9 +21,9 @@ import butterknife.OnClick;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private Callback callback;
-    private List<Book> mData;
+    private List<Category> mData;
 
-    public RecyclerViewAdapter(List<Book> mData) {
+    public RecyclerViewAdapter(List<Category> mData) {
         this.mData = mData;
     }
 
@@ -36,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
-        view = mInflater.inflate(R.layout.item_cardview_book, parent, false);
+        view = mInflater.inflate(R.layout.item_cardview_category, parent, false);
         return new ViewHolder(view);
     }
 
@@ -50,8 +50,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         return mData.size();
     }
 
-    public void addItems(final List<Book> books) {
-        mData.addAll(books);
+    public void addItems(final List<Category> categories) {
+        mData.addAll(categories);
         notifyDataSetChanged();
     }
 
@@ -61,13 +61,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public class ViewHolder extends BaseViewHolder {
 
-        @BindView(R.id.book_title_id)
+        @BindView(R.id.category_title)
         TextView tv_book_title;
+
+        @BindView(R.id.category_description)
+        TextView tv_book_sub_title;
 
         @BindView(R.id.book_img_id)
         ImageView img_book_thumbnail;
 
-        @BindView(R.id.cardView)
+        @BindView(R.id.cardCategoryItem)
         CardView cardView;
 
         public ViewHolder(View itemView) {
@@ -81,16 +84,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         public void onBind(int position) {
-            final Book book = mData.get(position);
-            if (book.getTitle() != null) {
-                tv_book_title.setText(book.getTitle());
+            final Category category = mData.get(position);
+            if (category.getTitle() != null) {
+                tv_book_title.setText(category.getTitle());
+                tv_book_sub_title.setText(category.getTitle());
             }
-            if (book.getThumbnail() != 0) {
-                img_book_thumbnail.setImageResource(book.getThumbnail());
+            if (category.getThumbnail() != 0) {
+                img_book_thumbnail.setImageResource(category.getThumbnail());
             }
         }
 
-        @OnClick(R.id.cardView)
+        @OnClick(R.id.cardCategoryItem)
         void onCardViewClick() {
             if (callback != null) {
                 callback.onCategoryClick();

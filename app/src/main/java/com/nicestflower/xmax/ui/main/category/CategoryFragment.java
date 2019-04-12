@@ -1,5 +1,6 @@
 package com.nicestflower.xmax.ui.main.category;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,20 @@ public class CategoryFragment extends BaseFragment implements CategoryMvpView, R
         return fragment;
     }
 
+    /**
+     * An util method to calculate the number of columns for a grid base on the item width (dp).
+     *
+     * @param context       the app context
+     * @param columnWidthDp the width of item(dp)
+     * @return the number of columns
+     */
+    public static int calculateNoOfColumns(Context context, float columnWidthDp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density;
+        int noOfColumns = (int) (screenWidthDp / columnWidthDp + 0.5); // +0.5 for correct rounding to int.
+        return noOfColumns;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,7 +84,7 @@ public class CategoryFragment extends BaseFragment implements CategoryMvpView, R
         });
 
         // setup category recycler view
-        rvCategory.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        rvCategory.setLayoutManager(new GridLayoutManager(getContext(), calculateNoOfColumns(getContext(), 180f)));
         rvCategory.setItemAnimator(new DefaultItemAnimator());
         rvCategory.setAdapter(rvCategoryAdapter);
 
@@ -76,8 +92,8 @@ public class CategoryFragment extends BaseFragment implements CategoryMvpView, R
     }
 
     @Override
-    public void updateCategoryList(List<Book> books) {
-        rvCategoryAdapter.addItems(books);
+    public void updateCategoryList(List<Category> categories) {
+        rvCategoryAdapter.addItems(categories);
     }
 
     @Override

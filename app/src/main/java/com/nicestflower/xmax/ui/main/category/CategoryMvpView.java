@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CategoryMvpView extends MvpView {
 
-    void updateCategoryList(List<Book> books);
+    void updateCategoryList(List<Category> categories);
 
     void openLessonActivity();
 

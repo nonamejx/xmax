@@ -26,15 +26,15 @@ public class CategoryPresenter<V extends CategoryMvpView> extends BasePresenter<
                 .getCategoryList()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Book>>() {
+                .subscribe(new Consumer<List<Category>>() {
                     @Override
-                    public void accept(@NonNull List<Book> books) throws Exception {
+                    public void accept(@NonNull List<Category> categories) throws Exception {
                         if (!isViewAttached()) {
                             return;
                         }
 
-                        if (books != null) {
-                            getMvpView().updateCategoryList(books);
+                        if (categories != null) {
+                            getMvpView().updateCategoryList(categories);
                         }
                     }
                 }, new Consumer<Throwable>() {
