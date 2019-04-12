@@ -5,12 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseViewHolder;
 import com.nicestflower.xmax.ui.lesson.model.Lesson;
+import com.nicestflower.xmax.ui.main.category.model.Category;
 
 import java.util.List;
 
@@ -19,18 +21,27 @@ import butterknife.ButterKnife;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
 
-    private List<Lesson> lessonList;
-    private LessonMvpPresenter<LessonMvpView> presenter;
+    private final List<Lesson> lessonList;
+    private final LessonMvpPresenter<LessonMvpView> presenter;
+    private final Category category;
 
-    public LessonAdapter(List<Lesson> lessonList, LessonMvpPresenter<LessonMvpView> presenter) {
+    public LessonAdapter(Category category, List<Lesson> lessonList,
+                         LessonMvpPresenter<LessonMvpView> presenter) {
         this.lessonList = lessonList;
         this.presenter = presenter;
+        this.category = category;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ViewHolder(presenter, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_recycler_view_lesson, viewGroup, false));
+        return new ViewHolder(
+                presenter,
+                LayoutInflater.from(
+                        viewGroup.getContext()).inflate(R.layout.item_recycler_view_lesson,
+                        viewGroup,
+                        false)
+        );
     }
 
     @Override
@@ -55,22 +66,26 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
     public class ViewHolder extends BaseViewHolder implements LessonRowView {
 
+        @BindView(R.id.lessonThumbnail)
+        FrameLayout lessonThumbnail;
+
         @BindView(R.id.txtTitle)
         TextView txtTitle;
 
-        @BindView(R.id.txtSize)
+        @BindView(R.id.txtLessonDescription)
         TextView txtSize;
 
         @BindView(R.id.btnCloudDownload)
         ImageButton btnCloudDownload;
 
-        public ViewHolder(final LessonMvpPresenter<LessonMvpView> presenter, View itemView) {
+        ViewHolder(final LessonMvpPresenter<LessonMvpView> presenter, final View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             this.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.onLessonClick(ViewHolder.this, getAdapterPosition(), lessonList.get(getAdapterPosition()));
+                    presenter.onLessonClick(ViewHolder.this, getAdapterPosition(),
+                            lessonList.get(getAdapterPosition()));
                 }
             });
         }
@@ -82,7 +97,10 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             final Lesson lesson = lessonList.get(position);
             setTitle(lesson.getTitle());
             setSize(lesson.getSize());
-            setDownloadButtonBackground(lesson.getDownloaded() ? R.drawable.ic_download_done : R.drawable.ic_download);
+            setDownloadButtonBackground(
+                    lesson.getDownloaded() ? R.drawable.ic_download_done : R.drawable.ic_download
+            );
+            setLessonThumbnail(category.getThumbnail());
 
         }
 
@@ -111,6 +129,13 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         public void setDownloadButtonBackground(int resId) {
             if (resId > 0) {
                 btnCloudDownload.setImageResource(resId);
+            }
+        }
+
+        @Override
+        public void setLessonThumbnail(int resId) {
+            if (resId > 0) {
+                lessonThumbnail.setBackgroundResource(resId);
             }
         }
     }

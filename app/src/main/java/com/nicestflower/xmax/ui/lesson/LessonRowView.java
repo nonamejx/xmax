@@ -8,4 +8,6 @@ public interface LessonRowView {
 
     void setDownloadButtonBackground(int resId);
 
+    void setLessonThumbnail(int resId);
+
 }

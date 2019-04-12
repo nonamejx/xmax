@@ -19,8 +19,8 @@ import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseActivity;
 import com.nicestflower.xmax.ui.lesson.detail.LessonDetailActivity;
 import com.nicestflower.xmax.ui.lesson.model.Lesson;
-import com.nicestflower.xmax.ui.main.category.model.Category;
 import com.nicestflower.xmax.ui.main.category.CategoryFragment;
+import com.nicestflower.xmax.ui.main.category.model.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +31,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LessonActivity extends BaseActivity implements LessonMvpView {
-
-    private static final String TAG = "LessonActivity";
 
     @Inject
     LessonMvpPresenter<LessonMvpView> mPresenter;
@@ -70,7 +68,7 @@ public class LessonActivity extends BaseActivity implements LessonMvpView {
         );
 
         // setup adapter
-        lessonAdapter = new LessonAdapter(new ArrayList<Lesson>(), mPresenter);
+        lessonAdapter = new LessonAdapter(category, new ArrayList<Lesson>(), mPresenter);
 
         // setup recycler view
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
