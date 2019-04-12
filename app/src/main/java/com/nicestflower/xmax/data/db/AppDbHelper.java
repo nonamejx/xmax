@@ -1,8 +1,8 @@
 package com.nicestflower.xmax.data.db;
 
 import com.nicestflower.xmax.R;
-import com.nicestflower.xmax.ui.lesson.Lesson;
-import com.nicestflower.xmax.ui.main.category.Category;
+import com.nicestflower.xmax.ui.lesson.model.Lesson;
+import com.nicestflower.xmax.ui.main.category.model.Category;
 
 import java.util.ArrayList;
 import java.util.Arrays;

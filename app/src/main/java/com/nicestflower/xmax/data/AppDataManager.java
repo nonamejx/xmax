@@ -6,8 +6,8 @@ import com.nicestflower.xmax.data.db.DbHelper;
 import com.nicestflower.xmax.data.network.ApiHelper;
 import com.nicestflower.xmax.data.prefs.PreferencesHelper;
 import com.nicestflower.xmax.di.ApplicationContext;
-import com.nicestflower.xmax.ui.lesson.Lesson;
-import com.nicestflower.xmax.ui.main.category.Category;
+import com.nicestflower.xmax.ui.lesson.model.Lesson;
+import com.nicestflower.xmax.ui.main.category.model.Category;
 
 import java.util.List;
 

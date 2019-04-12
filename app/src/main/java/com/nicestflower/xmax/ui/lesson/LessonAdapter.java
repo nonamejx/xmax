@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseViewHolder;
+import com.nicestflower.xmax.ui.lesson.model.Lesson;
 
 import java.util.List;
 

@@ -18,7 +18,8 @@ import com.liulishuo.okdownload.core.listener.assist.Listener1Assist;
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseActivity;
 import com.nicestflower.xmax.ui.lesson.detail.LessonDetailActivity;
-import com.nicestflower.xmax.ui.main.category.Category;
+import com.nicestflower.xmax.ui.lesson.model.Lesson;
+import com.nicestflower.xmax.ui.main.category.model.Category;
 import com.nicestflower.xmax.ui.main.category.CategoryFragment;
 
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class LessonActivity extends BaseActivity implements LessonMvpView {
         rvLessonList.setItemAnimator(new DefaultItemAnimator());
         rvLessonList.setAdapter(lessonAdapter);
 
-        //  init data for recycler view
+        // init data for recycler view
         mPresenter.initData();
 
     }

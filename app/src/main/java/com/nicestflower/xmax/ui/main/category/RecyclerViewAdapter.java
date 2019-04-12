@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseViewHolder;
+import com.nicestflower.xmax.ui.main.category.model.Category;
 
 import java.util.List;
 

@@ -17,6 +17,7 @@ import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.di.component.ActivityComponent;
 import com.nicestflower.xmax.ui.base.BaseFragment;
 import com.nicestflower.xmax.ui.lesson.LessonActivity;
+import com.nicestflower.xmax.ui.main.category.model.Category;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.nicestflower.xmax.ui.lesson;
+package com.nicestflower.xmax.ui.lesson.model;
 
 import java.util.List;
 

@@ -2,6 +2,7 @@ package com.nicestflower.xmax.ui.lesson;
 
 import com.nicestflower.xmax.data.DataManager;
 import com.nicestflower.xmax.ui.base.BasePresenter;
+import com.nicestflower.xmax.ui.lesson.model.Lesson;
 import com.nicestflower.xmax.utils.rx.SchedulerProvider;
 
 import java.util.List;

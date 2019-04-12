@@ -1,4 +1,4 @@
-package com.nicestflower.xmax.ui.main.category;
+package com.nicestflower.xmax.ui.main.category.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
