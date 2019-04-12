@@ -18,6 +18,8 @@ import com.liulishuo.okdownload.core.listener.assist.Listener1Assist;
 import com.nicestflower.xmax.R;
 import com.nicestflower.xmax.ui.base.BaseActivity;
 import com.nicestflower.xmax.ui.lesson.detail.LessonDetailActivity;
+import com.nicestflower.xmax.ui.main.category.Category;
+import com.nicestflower.xmax.ui.main.category.CategoryFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,7 @@ public class LessonActivity extends BaseActivity implements LessonMvpView {
     RecyclerView rvLessonList;
 
     private LessonAdapter lessonAdapter;
+    private Category category;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,11 +56,18 @@ public class LessonActivity extends BaseActivity implements LessonMvpView {
 
         mPresenter.onAttach(this);
 
+        this.category = getIntent().getParcelableExtra(CategoryFragment.SELECTED_CATEGORY_KEY);
+
         setUp();
     }
 
     @Override
     protected void setUp() {
+        // set title
+        setTitle(this.category == null ?
+                getResources().getString(R.string.app_name) : this.category.getTitle()
+        );
+
         // setup adapter
         lessonAdapter = new LessonAdapter(new ArrayList<Lesson>(), mPresenter);
 

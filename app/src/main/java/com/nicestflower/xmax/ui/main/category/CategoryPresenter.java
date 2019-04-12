@@ -54,7 +54,7 @@ public class CategoryPresenter<V extends CategoryMvpView> extends BasePresenter<
     }
 
     @Override
-    public void onCategoryClick() {
-        getMvpView().openLessonActivity();
+    public void onCategoryClick(Category category) {
+        getMvpView().openLessonActivity(category);
     }
 }

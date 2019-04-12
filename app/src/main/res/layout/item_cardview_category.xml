@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardCategoryItem"
+    android:id="@+id/card_category_item"
     android:layout_width="@dimen/card_category_item_width"
     android:layout_height="@dimen/card_category_item_height"
     android:layout_margin="@dimen/card_category_item_margin"
@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/book_img_id"
+            android:id="@+id/img_category_thumbnail"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

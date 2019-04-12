@@ -1,10 +1,24 @@
 package com.nicestflower.xmax.ui.main.category;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * A model for the category recycle view.
  */
-public class Category {
+public class Category implements Parcelable {
 
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
+
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
     private String title;
     private String category;
     private String description;
@@ -20,6 +34,12 @@ public class Category {
         this.thumbnail = thumbnail;
     }
 
+    protected Category(Parcel in) {
+        title = in.readString();
+        category = in.readString();
+        description = in.readString();
+        thumbnail = in.readInt();
+    }
 
     public String getTitle() {
         return title;
@@ -51,5 +71,18 @@ public class Category {
 
     public void setThumbnail(int thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(category);
+        dest.writeString(description);
+        dest.writeInt(thumbnail);
     }
 }

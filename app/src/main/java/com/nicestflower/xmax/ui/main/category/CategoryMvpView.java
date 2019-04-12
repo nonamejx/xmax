@@ -8,6 +8,6 @@ public interface CategoryMvpView extends MvpView {
 
     void updateCategoryList(List<Category> categories);
 
-    void openLessonActivity();
+    void openLessonActivity(Category category);
 
 }

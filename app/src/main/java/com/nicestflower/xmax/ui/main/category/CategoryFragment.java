@@ -29,6 +29,8 @@ public class CategoryFragment extends BaseFragment implements CategoryMvpView, R
 
     public static final String TAG = "CategoryFragment";
 
+    public static final String SELECTED_CATEGORY_KEY = "SELECTED_CATEGORY_KEY";
+
     @Inject
     CategoryMvpPresenter<CategoryMvpView> mPresenter;
 
@@ -97,14 +99,15 @@ public class CategoryFragment extends BaseFragment implements CategoryMvpView, R
     }
 
     @Override
-    public void openLessonActivity() {
+    public void openLessonActivity(Category category) {
         Intent intent = new Intent(getContext(), LessonActivity.class);
+        intent.putExtra(SELECTED_CATEGORY_KEY, category);
         startActivity(intent);
     }
 
     @Override
-    public void onCategoryClick() {
-        mPresenter.onCategoryClick();
+    public void onCategoryClick(Category category) {
+        mPresenter.onCategoryClick(category);
     }
 
     @Override

@@ -6,6 +6,6 @@ public interface CategoryMvpPresenter<V extends CategoryMvpView> extends MvpPres
 
     void onViewPrepared();
 
-    void onCategoryClick();
+    void onCategoryClick(Category category);
 
 }

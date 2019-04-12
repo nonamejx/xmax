@@ -56,21 +56,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public interface Callback {
-        void onCategoryClick();
+        void onCategoryClick(Category category);
     }
 
     public class ViewHolder extends BaseViewHolder {
 
         @BindView(R.id.category_title)
-        TextView tv_book_title;
+        TextView tvCategoryTitle;
 
         @BindView(R.id.category_description)
-        TextView tv_book_sub_title;
+        TextView tvCategoryDescription;
 
-        @BindView(R.id.book_img_id)
-        ImageView img_book_thumbnail;
+        @BindView(R.id.img_category_thumbnail)
+        ImageView imgCategoryThumbnail;
 
-        @BindView(R.id.cardCategoryItem)
+        @BindView(R.id.card_category_item)
         CardView cardView;
 
         public ViewHolder(View itemView) {
@@ -86,18 +86,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void onBind(int position) {
             final Category category = mData.get(position);
             if (category.getTitle() != null) {
-                tv_book_title.setText(category.getTitle());
-                tv_book_sub_title.setText(category.getTitle());
+                tvCategoryTitle.setText(category.getTitle());
+                tvCategoryDescription.setText(category.getTitle());
             }
             if (category.getThumbnail() != 0) {
-                img_book_thumbnail.setImageResource(category.getThumbnail());
+                imgCategoryThumbnail.setImageResource(category.getThumbnail());
             }
         }
 
-        @OnClick(R.id.cardCategoryItem)
+        @OnClick(R.id.card_category_item)
         void onCardViewClick() {
             if (callback != null) {
-                callback.onCategoryClick();
+                callback.onCategoryClick(mData.get(this.getAdapterPosition()));
             }
         }
     }
