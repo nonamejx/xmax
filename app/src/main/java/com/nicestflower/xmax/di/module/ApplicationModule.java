@@ -25,6 +25,7 @@ import com.nicestflower.xmax.data.db.AppDbHelper;
 import com.nicestflower.xmax.data.db.DbHelper;
 import com.nicestflower.xmax.data.network.ApiHelper;
 import com.nicestflower.xmax.data.network.AppApiHelper;
+import com.nicestflower.xmax.data.network.model.ApiHeader;
 import com.nicestflower.xmax.data.prefs.AppPreferencesHelper;
 import com.nicestflower.xmax.data.prefs.PreferencesHelper;
 import com.nicestflower.xmax.di.ApiInfo;
@@ -99,6 +100,12 @@ public class ApplicationModule {
     @Singleton
     ApiHelper provideApiHelper(AppApiHelper appApiHelper) {
         return appApiHelper;
+    }
+
+    @Provides
+    @Singleton
+    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(PreferencesHelper preferencesHelper) {
+        return new ApiHeader.ProtectedApiHeader("Bearer " + preferencesHelper.getAuthenticationToken());
     }
 
     @Provides

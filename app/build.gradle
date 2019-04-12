@@ -13,9 +13,17 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"http://api.huynhhai.com:6970\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+            buildConfigField("String", "API_USERNAME", "\"androiduser\"")
+            buildConfigField("String", "API_PASSWORD", "\"AndroidUser123!@#\"")
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"http://api.huynhhai.com:6970\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
         }
     }
 }
@@ -71,6 +79,9 @@ dependencies {
 
     // logger
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+    // commons-lang3
+    implementation "org.apache.commons:commons-lang3:$rootProject.commonsLang3Version"
 
     // dependencies for local unit tests
     testImplementation "junit:junit:$rootProject.ext.junitVersion"

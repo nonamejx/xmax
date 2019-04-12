@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     protected void setUp() {
         setUpFragmentMap();
         setUpBottomNavigationView();
+        // show CategoryFragment as a default fragment
         mPresenter.onCategoryMenuClick();
     }
 

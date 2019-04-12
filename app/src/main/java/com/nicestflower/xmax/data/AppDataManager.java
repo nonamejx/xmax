@@ -4,6 +4,10 @@ import android.content.Context;
 
 import com.nicestflower.xmax.data.db.DbHelper;
 import com.nicestflower.xmax.data.network.ApiHelper;
+import com.nicestflower.xmax.data.network.model.AccountResponse;
+import com.nicestflower.xmax.data.network.model.ApiHeader;
+import com.nicestflower.xmax.data.network.model.AuthenticationResponse;
+import com.nicestflower.xmax.data.network.model.LoginRequest;
 import com.nicestflower.xmax.data.prefs.PreferencesHelper;
 import com.nicestflower.xmax.di.ApplicationContext;
 import com.nicestflower.xmax.ui.lesson.model.Lesson;
@@ -15,6 +19,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 
 @Singleton
 public class AppDataManager implements DataManager {
@@ -43,5 +48,30 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<Lesson>> getLessonList() {
         return mDbHelper.getLessonList();
+    }
+
+    @Override
+    public ApiHeader getApiHeader() {
+        return mApiHelper.getApiHeader();
+    }
+
+    @Override
+    public Single<AuthenticationResponse> authenticate(LoginRequest.AuthenticationRequest request) {
+        return mApiHelper.authenticate(request);
+    }
+
+    @Override
+    public Single<AccountResponse> getAccountInformation() {
+        return mApiHelper.getAccountInformation();
+    }
+
+    @Override
+    public String getAuthenticationToken() {
+        return mPreferencesHelper.getAuthenticationToken();
+    }
+
+    @Override
+    public void setAuthenticationToken(String authenticationToken) {
+        mPreferencesHelper.setAuthenticationToken(authenticationToken);
     }
 }

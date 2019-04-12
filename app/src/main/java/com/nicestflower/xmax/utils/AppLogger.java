@@ -1,6 +1,7 @@
 package com.nicestflower.xmax.utils;
 
-import timber.log.BuildConfig;
+import com.nicestflower.xmax.BuildConfig;
+
 import timber.log.Timber;
 
 public class AppLogger {

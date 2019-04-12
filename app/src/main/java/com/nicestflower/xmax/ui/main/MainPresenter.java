@@ -18,6 +18,9 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     @Override
     public void onCategoryMenuClick() {
         getMvpView().showCategoryFragment();
+
+        // todo: please remove this, we just show the token for debug
+        getMvpView().showMessage(getDataManager().getAuthenticationToken());
     }
 
     @Override
