@@ -6,18 +6,39 @@ import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Property;
 
+@Entity(nameInDb = "category")
 public class CategoryResponse {
 
     @SerializedName("id")
     @Expose
+    @Id
     private long id;
+
     @SerializedName("title")
     @Expose
+    @Property(nameInDb = "title")
     private String title;
+
     @SerializedName("sectionCount")
     @Expose
+    @Property(nameInDb = "section_count")
     private long sectionCount;
+
+    @Generated(hash = 432552240)
+    public CategoryResponse(long id, String title, long sectionCount) {
+        this.id = id;
+        this.title = title;
+        this.sectionCount = sectionCount;
+    }
+
+    @Generated(hash = 1392536694)
+    public CategoryResponse() {
+    }
 
     public long getId() {
         return id;

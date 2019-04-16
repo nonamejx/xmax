@@ -27,6 +27,25 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
         // todo: please remove this, we just show the token for debug
         getMvpView().showMessage(getDataManager().getAuthenticationToken());
 
+        // todo: please remove this
+        getCompositeDisposable().add(
+                getDataManager()
+                        .getAllCategoriesFromDb()
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<CategoryResponse>>() {
+                            @Override
+                            public void accept(List<CategoryResponse> categoryResponses) throws Exception {
+                                Timber.d(categoryResponses.toString());
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Timber.e(throwable);
+                            }
+                        })
+        );
+
         // todo: please remove this, we just get all categories for debug
         getCompositeDisposable().add(
                 getDataManager()
@@ -37,6 +56,25 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                             @Override
                             public void accept(List<CategoryResponse> categoryResponses) throws Exception {
                                 Timber.d(categoryResponses.toString());
+
+                                // todo: please remove this
+                                getCompositeDisposable().add(
+                                        getDataManager()
+                                                .saveCategoryList(categoryResponses)
+                                                .subscribeOn(getSchedulerProvider().io())
+                                                .observeOn(getSchedulerProvider().ui())
+                                                .subscribe(new Consumer<Boolean>() {
+                                                    @Override
+                                                    public void accept(Boolean aBoolean) throws Exception {
+                                                        Timber.d("Saved: %s", aBoolean);
+                                                    }
+                                                }, new Consumer<Throwable>() {
+                                                    @Override
+                                                    public void accept(Throwable throwable) throws Exception {
+                                                        Timber.e(throwable);
+                                                    }
+                                                })
+                                );
                             }
                         }, new Consumer<Throwable>() {
                             @Override

@@ -52,6 +52,16 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<Boolean> saveCategoryList(List<CategoryResponse> categories) {
+        return mDbHelper.saveCategoryList(categories);
+    }
+
+    @Override
+    public Observable<List<CategoryResponse>> getAllCategoriesFromDb() {
+        return mDbHelper.getAllCategoriesFromDb();
+    }
+
+    @Override
     public ApiHeader getApiHeader() {
         return mApiHelper.getApiHeader();
     }
