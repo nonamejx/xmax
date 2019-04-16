@@ -3,7 +3,10 @@ package com.nicestflower.xmax.data.network;
 import com.nicestflower.xmax.data.network.model.AccountResponse;
 import com.nicestflower.xmax.data.network.model.ApiHeader;
 import com.nicestflower.xmax.data.network.model.AuthenticationResponse;
+import com.nicestflower.xmax.data.network.model.CategoryResponse;
 import com.nicestflower.xmax.data.network.model.LoginRequest;
+
+import java.util.List;
 
 import io.reactivex.Single;
 
@@ -33,5 +36,12 @@ public interface ApiHelper {
      * @return the account response
      */
     Single<AccountResponse> getAccountInformation();
+
+    /**
+     * Get all categories information from API.
+     *
+     * @return the response of the list of categories
+     */
+    Single<List<CategoryResponse>> getAllCategories();
 
 }

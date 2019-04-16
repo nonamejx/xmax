@@ -105,6 +105,7 @@ public class ApplicationModule {
     @Provides
     @Singleton
     ApiHeader.ProtectedApiHeader provideProtectedApiHeader(PreferencesHelper preferencesHelper) {
+        // todo: please check the provided protected api header here, should we provide it in activity instead ?, because the access token is still null after logging in successfully
         return new ApiHeader.ProtectedApiHeader("Bearer " + preferencesHelper.getAuthenticationToken());
     }
 

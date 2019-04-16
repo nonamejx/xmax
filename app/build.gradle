@@ -16,8 +16,8 @@ android {
         debug {
             buildConfigField("String", "BASE_URL", "\"http://api.huynhhai.com:6970\"")
             buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
-            buildConfigField("String", "API_USERNAME", "\"androiduser\"")
-            buildConfigField("String", "API_PASSWORD", "\"AndroidUser123!@#\"")
+            buildConfigField("String", "API_USERNAME", "\"user\"")
+            buildConfigField("String", "API_PASSWORD", "\"user\"")
         }
         release {
             minifyEnabled true

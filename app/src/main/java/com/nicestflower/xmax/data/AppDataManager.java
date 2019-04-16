@@ -7,6 +7,7 @@ import com.nicestflower.xmax.data.network.ApiHelper;
 import com.nicestflower.xmax.data.network.model.AccountResponse;
 import com.nicestflower.xmax.data.network.model.ApiHeader;
 import com.nicestflower.xmax.data.network.model.AuthenticationResponse;
+import com.nicestflower.xmax.data.network.model.CategoryResponse;
 import com.nicestflower.xmax.data.network.model.LoginRequest;
 import com.nicestflower.xmax.data.prefs.PreferencesHelper;
 import com.nicestflower.xmax.di.ApplicationContext;
@@ -63,6 +64,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<AccountResponse> getAccountInformation() {
         return mApiHelper.getAccountInformation();
+    }
+
+    @Override
+    public Single<List<CategoryResponse>> getAllCategories() {
+        return mApiHelper.getAllCategories();
     }
 
     @Override

@@ -3,8 +3,11 @@ package com.nicestflower.xmax.data.network;
 import com.nicestflower.xmax.data.network.model.AccountResponse;
 import com.nicestflower.xmax.data.network.model.ApiHeader;
 import com.nicestflower.xmax.data.network.model.AuthenticationResponse;
+import com.nicestflower.xmax.data.network.model.CategoryResponse;
 import com.nicestflower.xmax.data.network.model.LoginRequest;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -42,6 +45,15 @@ public class AppApiHelper implements ApiHelper {
                 .addHeaders(mApiHeader.getProtectedApiHeader())
                 .build()
                 .getObjectSingle(AccountResponse.class);
+    }
+
+    @Override
+    public Single<List<CategoryResponse>> getAllCategories() {
+        return Rx2AndroidNetworking
+                .get(ApiEndPoint.ENDPOINT_ALL_CATEGORIES)
+                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .build()
+                .getObjectListSingle(CategoryResponse.class);
     }
 
 }

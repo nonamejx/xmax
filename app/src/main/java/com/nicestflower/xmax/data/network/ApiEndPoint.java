@@ -9,6 +9,8 @@ public final class ApiEndPoint {
             + "/api/authenticate";
     public static final String ENDPOINT_ACCOUNT_INFORMATION = BuildConfig.BASE_URL
             + "/api/account";
+    public static final String ENDPOINT_ALL_CATEGORIES = BuildConfig.BASE_URL
+            + "/api/categories";
 
     private ApiEndPoint() {
         // This class is not publicly instantiable
